@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/auth/layout,_N_T_/auth/pending/layout,_N_T_/auth/pending/page,_N_T_/auth/pending"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/auth/pending/__PAGE__",
+    "/auth/pending",
+    "/auth",
+    "/_index",
+    "/_head"
+  ]
+}

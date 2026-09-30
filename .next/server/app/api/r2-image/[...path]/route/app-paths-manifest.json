@@ -1,0 +1,3 @@
+{
+  "/api/r2-image/[...path]/route": "app/api/r2-image/[...path]/route.js"
+}

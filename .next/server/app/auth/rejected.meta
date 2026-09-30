@@ -1,0 +1,16 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/auth/layout,_N_T_/auth/rejected/layout,_N_T_/auth/rejected/page,_N_T_/auth/rejected"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/auth/rejected/__PAGE__",
+    "/auth/rejected",
+    "/auth",
+    "/_index",
+    "/_head"
+  ]
+}

@@ -1,0 +1,3 @@
+module.exports=[29234,a=>{"use strict";var b=a.i(87924),c=a.i(50944),d=a.i(72131);a.s(["default",0,function({id:a,featured:e}){let f=(0,c.useRouter)(),[g,h]=(0,d.useState)(!1),[i,j]=(0,d.useState)(e),k=async()=>{h(!0),(await fetch(`/api/admin/products/${a}/toggle-featured`,{method:"POST"})).ok&&(j(a=>!a),f.refresh()),h(!1)};return(0,b.jsx)("button",{onClick:k,disabled:g,className:`w-8 h-4 rounded-full transition-colors relative ${i?"bg-gold":"bg-black/20"} disabled:opacity-50`,title:i?"Featured — click to unfeature":"Not featured — click to feature",children:(0,b.jsx)("span",{className:`absolute top-0.5 w-3 h-3 rounded-full bg-white transition-all ${i?"left-4":"left-0.5"}`})})}])}];
+
+//# sourceMappingURL=components_admin_AdminProductToggle_tsx_12~8ypn._.js.map

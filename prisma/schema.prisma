@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id                String   @id @default(cuid())
+  sku               String?  @unique
+  name              String
+  category          String   // rings | earrings | pendants | bracelets | bangles | necklaces
+  description       String
+  baseMetal         String   // gold | silver | brass
+  purityOptions     String[] // e.g. ["14K","18K"] or ["925"]
+  metalColorOptions String[] // e.g. ["Yellow Gold","White Gold","Rose Gold"]
+  availableStones   String[] // e.g. ["Diamond","Ruby","None"]
+  primaryGemstone   String?
+  images            String[] // R2 keys resolved via getR2AssetUrl()
+  featured          Boolean  @default(false)
+  weightGrams       Float?
+  makingChargeC     Float    @default(0) // per-product labour override (L), ₹/g; 0 = use global labourCostPerGram
+  gemstoneCount     Int      @default(1) // N in formula: number of gemstones per piece
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model ClientAccount {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  name          String
+  company       String
+  country       String
+  phone         String?
+  businessType  String   // Retailer | Wholesaler | Designer | Other
+  status        String   @default("PENDING") // PENDING | APPROVED | REJECTED
+  rejectionNote String?
+  approvalToken String?  @unique // one-click email approval token
+  supabaseUid   String?  @unique // linked Supabase Auth user id
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Inquiry {
+  id        String   @id @default(cuid())
+  type      String   // INQUIRY | QUOTATION
+  name      String
+  email     String
+  company   String?
+  phone     String?
+  message   String?
+  status    String   @default("NEW") // NEW | VIEWED | HANDLED
+  createdAt DateTime @default(now())
+}
+
+model Certificate {
+  id          String  @id
+  name        String
+  issuingBody String
+  imageKey    String  // R2 key, resolved via getR2AssetUrl()
+  validity    String?
+  sortOrder   Int     @default(0)
+}
+
+// Stone cost values used in pricing formula: N*(s+st), all in INR
+model StonePrice {
+  id         String @id @default(cuid())
+  stoneName  String @unique  // "Diamond" | "Ruby" | "None" etc.
+  priceD     Float  @default(0) // s  — stone cost INR per piece
+  satinCost  Float  @default(0) // st — satin/setting cost INR per piece (editable per stone type)
+}
+
+// Key-value store for admin-controlled site settings
+model SiteSettings {
+  key   String @id
+  value String
+  // Pricing formula keys (P = w*m*wastageFactor + N*(s+st) + L*w + platingFactor*w*m):
+  //   wastageFactor         — metal wastage multiplier, e.g. "1.07"
+  //   labourCostPerGram     — L, global labour cost ₹/g, e.g. "500"
+  //   platingCostFactor     — dimensionless plating factor P, e.g. "0.05"
+  //   exchangeRateUSDtoINR  — e.g. "83.5"
+  // Display keys:
+  //   showPricingToClients  — "true" | "false"
+  //   displayCurrency       — "INR" (default) | "USD"; site-wide display currency.
+  //                           Prices are always stored/calculated in INR and
+  //                           converted for display via exchangeRateUSDtoINR.
+}
+
+// ── Website builder (Admin → Pages) ─────────────────────────────────────────
+// Custom pages composed of ordered sections. Rendered publicly at /<slug>;
+// pages with showInNav appear in the navbar (and footer) automatically.
+model CmsPage {
+  id              String       @id @default(cuid())
+  slug            String       @unique
+  title           String
+  navLabel        String?
+  showInNav       Boolean      @default(false)
+  navOrder        Int          @default(0)
+  status          String       @default("DRAFT") // DRAFT | PUBLISHED
+  metaDescription String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  sections        CmsSection[]
+}
+
+model CmsSection {
+  id        String  @id @default(cuid())
+  pageId    String
+  page      CmsPage @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  type      String  // hero | text | image_text | gallery | cta | stats
+  sortOrder Int     @default(0)
+  isVisible Boolean @default(true)
+  props     Json    @default("{}")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([pageId, sortOrder])
+}
+
+// ── Team (Admin → Team) ─────────────────────────────────────────────────────
+// Panel access lives here, editable from Supabase (Table Editor / SQL) as
+// well as from the admin UI. role is "owner" or "admin" — both grant full
+// admin-panel access; owner is simply the higher label.
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      String   @default("admin") // owner | admin
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

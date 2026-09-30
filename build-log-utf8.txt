@@ -1,0 +1,235 @@
+﻿
+> sachi-jewellers-v2@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.2.2 (Turbopack)
+
+  Creating an optimized production build ...
+node.exe : Error: 
+`@utility 
+btn-primary:hover` 
+defines an invalid 
+utility name. 
+Utilities should be 
+alphanumeric and 
+start with a 
+lowercase letter.
+At line:1 char:1
++ & "C:\Program File
+s\nodejs/node.exe" "
+C:\Users\ameya\AppDa
+ta\Roaming\ ...
++ ~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo  
+            : NotS  
+  pecified: (Erro   
+ r: `@utilit...w    
+ercase letter.:    
+String) [], Rem    
+oteException
+    + FullyQualifie 
+   dErrorId : Nati  
+  veCommandError
+ 
+    [2m[at 
+C:\NextJS Projects\s
+achi-jewellers-v2\no
+de_modules\tailwindc
+ss\dist\lib.js:32:38
+56][0m
+    [2m[at _r 
+(C:\NextJS Projects\
+sachi-jewellers-v2\n
+ode_modules\tailwind
+css\dist\lib.js:3:17
+33)][0m
+    [2m[at I 
+(C:\NextJS Projects\
+sachi-jewellers-v2\n
+ode_modules\tailwind
+css\dist\lib.js:3:13
+77)][0m
+    [2m[at mn 
+(C:\NextJS Projects\
+sachi-jewellers-v2\n
+ode_modules\tailwind
+css\dist\lib.js:32:2
+712)][0m
+    [2m[at async 
+gn (C:\NextJS Projec
+ts\sachi-jewellers-v
+2\node_modules\tailw
+indcss\dist\lib.js:3
+8:631)][0m
+    [2m[at async 
+Xr (C:\NextJS Projec
+ts\sachi-jewellers-v
+2\node_modules\@tail
+windcss\node\dist\in
+dex.js:10:3416)][0m
+    [2m[at async N 
+(C:\NextJS Projects\
+sachi-jewellers-v2\n
+ode_modules\@tailwin
+dcss\postcss\dist\in
+dex.js:10:3979)][0m
+    [2m[at async 
+Object.Once 
+(C:\NextJS Projects\
+sachi-jewellers-v2\n
+ode_modules\@tailwin
+dcss\postcss\dist\in
+dex.js:10:4251)][0m
+    [2mat async 
+LazyResult.runAsync 
+(node_modules/postcs
+s/lib/lazy-result.js
+:293:11) [C:\NextJS 
+Projects\sachi-jewel
+lers-v2\.next\build\
+chunks\node_modules_
+13sb.px._.js:6214:21
+][0m
+    [2mat async 
+transform (turbopack
+:///[turbopack-node]
+/transforms/postcss.
+ts:70:34) 
+[C:\NextJS Projects\
+sachi-jewellers-v2\.
+next\build\chunks\[r
+oot-of-the-server]__
+0d-m0h0._.js:147:36]
+[0m
+
+> Build error 
+occurred
+Error: Turbopack 
+build failed with 2 
+errors:
+./next.config.ts
+Failed to resolve 
+package babel-plugin
+-react-compiler 
+while attempting to 
+resolve React 
+Compiler
+React compiler is 
+enabled in 
+next.config.ts. We 
+attempted to 
+resolve React 
+Compiler relative 
+to the next 
+package. Is babel-pl
+ugin-react-compiler 
+installed in your 
+node_modules 
+directory?
+
+
+./app/globals.css
+Error evaluating 
+Node.js code
+CssSyntaxError: 
+tailwindcss: 
+C:\NextJS Projects\s
+achi-jewellers-v2\ap
+p\globals.css:1:1: 
+`@utility 
+btn-primary:hover` 
+defines an invalid 
+utility name. 
+Utilities should be 
+alphanumeric and 
+start with a 
+lowercase letter.
+    at Input.error (
+node_modules/postcss
+/lib/input.js:135:16
+) [C:\NextJS Project
+s\sachi-jewellers-v2
+\.next\build\chunks\
+node_modules_13sb.px
+._.js:4651:22]
+    at error (node_m
+odules/postcss/lib/n
+ode.js:146:32) 
+[C:\NextJS Projects\
+sachi-jewellers-v2\.
+next\build\chunks\no
+de_modules_13sb.px._
+.js:928:38]
+    [at Object.Once 
+(C:\NextJS Projects\
+sachi-jewellers-v2\n
+ode_modules\@tailwin
+dcss\postcss\dist\in
+dex.js:10:6913)]
+    at async 
+LazyResult.runAsync 
+(node_modules/postcs
+s/lib/lazy-result.js
+:293:11) [C:\NextJS 
+Projects\sachi-jewel
+lers-v2\.next\build\
+chunks\node_modules_
+13sb.px._.js:6214:21
+]
+    at async 
+transform (turbopack
+:///[turbopack-node]
+/transforms/postcss.
+ts:70:34) 
+[C:\NextJS Projects\
+sachi-jewellers-v2\.
+next\build\chunks\[r
+oot-of-the-server]__
+0d-m0h0._.js:147:36]
+    at async run (tu
+rbopack:///[turbopac
+k-node]/child_proces
+s/evaluate.ts:89:23)
+ [C:\NextJS Projects
+\sachi-jewellers-v2\
+.next\build\chunks\[
+root-of-the-server]_
+_0ubbtyl._.js:443:31
+]
+
+Import trace:
+  Client Component 
+Browser:
+    
+./app/globals.css 
+[Client Component 
+Browser]
+    
+./app/layout.tsx 
+[Server Component]
+
+
+    at async 
+transform (turbopack
+:///[turbopack-node]
+/transforms/postcss.
+ts:70:34) 
+[C:\NextJS Projects\
+sachi-jewellers-v2\.
+next\build\chunks\[r
+oot-of-the-server]__
+0d-m0h0._.js:147:36]
+)
+    at async run (tu
+rbopack:///[turbopac
+k-node]/child_proces
+s/evaluate.ts:89:23)
+ [C:\NextJS Projects
+\sachi-jewellers-v2\
+.next\build\chunks\[
+root-of-the-server]_
+_0ubbtyl._.js:443:31
+])
